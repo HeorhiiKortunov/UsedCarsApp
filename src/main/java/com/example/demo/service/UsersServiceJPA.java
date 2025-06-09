@@ -1,0 +1,25 @@
+package com.example.demo.service;
+
+import com.example.demo.entites.Users;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+import java.util.List;
+
+@Transactional
+public class UsersServiceJPA implements UsersService{
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	public void addUser(Users user) {
+		entityManager.persist(user);
+	}
+
+	@Override
+	public List<Users> getAllUsers() {
+		return entityManager.createNamedQuery("Users.getAllUsers").getResultList();
+	}
+}

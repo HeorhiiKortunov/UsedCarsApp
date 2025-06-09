@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @NamedQueries({
 		@NamedQuery(
 				name = "Comments.getByPost",
-				query = "SELECT c FROM Comments c WHERE c.commentAuthor = :commentAuthor"
+				query = "SELECT c FROM Comments c WHERE c.post = :post"
 		)
 })
 public class Comments {
@@ -21,6 +21,10 @@ public class Comments {
 	@ManyToOne
 	@JoinColumn(name = "comment_author_id", referencedColumnName = "id")
 	private Users commentAuthor;
+
+	@ManyToOne
+	@JoinColumn(name = "comment_post_id", referencedColumnName = "id")
+	private Posts post;
 
 
 	public Comments() {}
