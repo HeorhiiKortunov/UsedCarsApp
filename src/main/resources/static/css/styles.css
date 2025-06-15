@@ -59,3 +59,20 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.create-post-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-post-button:hover {
+    background-color: #0056b3;
+}
+

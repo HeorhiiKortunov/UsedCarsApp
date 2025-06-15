@@ -34,16 +34,18 @@ public class PostsServiceJPA implements PostsService{
 	public List<Posts> getPostsFiltered(String make, String model, Integer year, Integer mileage, Double minPrice, Double maxPrice) {
 		StringBuilder jpql = new StringBuilder("SELECT p FROM Posts p WHERE 1=1");
 
-		if (make != null) jpql.append(" AND p.make = :make");
-		if (model != null) jpql.append(" AND p.model = :model");
+		if (make != null && !make.isEmpty()) jpql.append(" AND LOWER(p.make) LIKE LOWER(:make)");
+		if (model != null && !model.isEmpty()) jpql.append(" AND LOWER(p.model) LIKE LOWER(:model)");
 		if (year != null) jpql.append(" AND p.year = :year");
 		if (mileage != null) jpql.append(" AND p.mileage = :mileage");
 		if (minPrice != null && maxPrice != null) jpql.append(" AND p.price BETWEEN :minPrice AND :maxPrice");
 
 		TypedQuery<Posts> query = entityManager.createQuery(jpql.toString(), Posts.class);
 
-		if (make != null) query.setParameter("make", make);
-		if (model != null) query.setParameter("model", model);
+		System.out.println(jpql);
+
+		if (make != null && !make.isEmpty()) query.setParameter("make", "%" + make + "%");
+		if (model != null && !model.isEmpty()) query.setParameter("model", "%" + model + "%");
 		if (year != null) query.setParameter("year", year);
 		if (mileage != null) query.setParameter("mileage", mileage);
 		if (minPrice != null && maxPrice != null) {
@@ -53,6 +55,7 @@ public class PostsServiceJPA implements PostsService{
 
 		return query.getResultList();
 	}
+
 
 	@Override
 	public Posts getById(long id) { return entityManager.createNamedQuery("Posts.getById", Posts.class).setParameter("id", id).getSingleResult();}

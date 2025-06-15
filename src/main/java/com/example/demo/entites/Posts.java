@@ -30,7 +30,7 @@ public class Posts {
 
 	private String make;
 
-	private String Model;
+	private String model;
 
 	private int year;
 
@@ -45,7 +45,7 @@ public class Posts {
 		this.id = id;
 		this.postAuthor = postAuthor;
 		this.make = make;
-		Model = model;
+		this.model = model;
 		this.year = year;
 		this.mileage = mileage;
 		this.price = price;
@@ -76,11 +76,11 @@ public class Posts {
 	}
 
 	public String getModel() {
-		return Model;
+		return model;
 	}
 
 	public void setModel(String model) {
-		Model = model;
+		this.model = model;
 	}
 
 	public int getYear() {

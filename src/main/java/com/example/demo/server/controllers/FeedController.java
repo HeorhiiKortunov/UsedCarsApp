@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 @Controller
 public class FeedController {
@@ -28,9 +28,18 @@ public class FeedController {
 			Model viewModel) {
 
 		List<Posts> posts = postsService.getPostsFiltered(make, model, year, mileage, minPrice, maxPrice);
+
 		viewModel.addAttribute("posts", posts);
+
+		viewModel.addAttribute("make", make);
+		viewModel.addAttribute("model", model);
+		viewModel.addAttribute("year", year);
+		viewModel.addAttribute("mileage", mileage);
+		viewModel.addAttribute("minPrice", minPrice);
+		viewModel.addAttribute("maxPrice", maxPrice);
 
 		return "feed";
 	}
+
 
 }
