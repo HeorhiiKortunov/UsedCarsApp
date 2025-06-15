@@ -12,6 +12,10 @@ import jakarta.persistence.*;
 		@NamedQuery(
 				name = "Users.resetUsers",
 				query = "DELETE FROM Users"
+		),
+		@NamedQuery(
+				name = "Users.getById",
+				query = "SELECT u FROM Users u WHERE u.id = :id"
 		)
 })
 public class Users {
@@ -22,12 +26,17 @@ public class Users {
 
 	private String username;
 
+	private String email;
+	private int phone;
+
 
 	public Users() {}
 
-	public Users(long id, String username) {
+	public Users(long id, String username, String email, int phone) {
 		this.id = id;
 		this.username = username;
+		this.email = email;
+		this.phone = phone;
 	}
 
 	public long getId() {
@@ -44,5 +53,21 @@ public class Users {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 }

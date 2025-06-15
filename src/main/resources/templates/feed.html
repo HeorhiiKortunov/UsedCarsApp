@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Feed</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Car Listings</h1>
+
+<div class="feed-container">
+    <div th:each="post : ${posts}" class="post-card">
+        <a th:href="@{'/post'(id=${post.id})}" class="post-link">
+            <h2 th:text="${post.make} + ' ' + ${post.model}">Car Title</h2>
+            <p><strong>Year:</strong> <span th:text="${post.year}"></span></p>
+            <p><strong>Mileage:</strong> <span th:text="${post.mileage}"></span> km</p>
+            <p><strong>Price:</strong> $<span th:text="${post.price}"></span></p>
+            <p><strong>Seller:</strong> <span th:text="${post.postAuthor.username}"></span></p>
+        </a>
+    </div>
+</div>
+</body>
+</html>

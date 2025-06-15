@@ -20,6 +20,11 @@ public class UsersServiceJPA implements UsersService{
 
 	@Override
 	public List<Users> getAllUsers() {
-		return entityManager.createNamedQuery("Users.getAllUsers").getResultList();
+		return entityManager.createNamedQuery("Users.getAllUsers", Users.class).getResultList();
+	}
+
+	@Override
+	public Users getById(long id) {
+		return entityManager.createNamedQuery("Users.getById", Users.class).setParameter("id", id).getSingleResult();
 	}
 }

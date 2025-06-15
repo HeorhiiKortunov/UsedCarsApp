@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="post-detail">
+    <h1 th:text="${post.make} + ' ' + ${post.model}">Car Title</h1>
+
+    <ul>
+        <li><strong>Year:</strong> <span th:text="${post.year}"></span></li>
+        <li><strong>Mileage:</strong> <span th:text="${post.mileage}"></span> km</li>
+        <li><strong>Price:</strong> $<span th:text="${post.price}"></span></li>
+    </ul>
+
+    <h2>Seller Info</h2>
+    <ul>
+        <li><strong>Name:</strong> <span th:text="${user.username}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${user.email}"></span></li>
+        <li><strong>Phone:</strong> <span th:text="${user.phone}"></span></li>
+    </ul>
+
+    <a href="/feed">← Back to Feed</a>
+</div>
+</body>
+</html>

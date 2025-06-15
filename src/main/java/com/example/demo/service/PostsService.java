@@ -9,4 +9,8 @@ public interface PostsService {
 	public void addPost(Posts post);
 	public List<Posts> getPostsByUser(Users author);
 	public List<Posts> getAllPosts();
+	public List<Posts> getPostsFiltered(String make, String model, Integer year, Integer mileage, Double minPrice, Double maxPrice);
+	//public Users getUserByPost(Posts post);
+	public Posts getById(long id);
+
 }
