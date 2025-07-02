@@ -24,6 +24,10 @@
 <div class="feed-container">
     <div th:each="post : ${posts}" class="post-card">
         <a th:href="@{'/post'(id=${post.id})}" class="post-link">
+            <div th:if="${post.images}" class="post-image-thumb">
+                <img th:src="@{/images/{id}(id=${post.images[0].id})}" alt="Car image"
+                     style="max-width:200px; max-height:150px; object-fit: cover;">
+            </div>
             <h2 th:text="${post.make} + ' ' + ${post.model}">Car Title</h2>
             <p><strong>Year:</strong> <span th:text="${post.year}"></span></p>
             <p><strong>Mileage:</strong> <span th:text="${post.mileage}"></span> km</p>

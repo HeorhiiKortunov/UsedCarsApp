@@ -6,9 +6,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @Transactional
 public class PostsServiceJPA implements PostsService{
 
@@ -32,7 +34,7 @@ public class PostsServiceJPA implements PostsService{
 
 	@Override
 	public List<Posts> getPostsFiltered(String make, String model, Integer year, Integer mileage, Double minPrice, Double maxPrice) {
-		StringBuilder jpql = new StringBuilder("SELECT p FROM Posts p WHERE 1=1");
+		StringBuilder jpql = new StringBuilder("SELECT DISTINCT p FROM Posts p LEFT JOIN FETCH p.images WHERE 1=1");
 
 		if (make != null && !make.isEmpty()) jpql.append(" AND LOWER(p.make) LIKE LOWER(:make)");
 		if (model != null && !model.isEmpty()) jpql.append(" AND LOWER(p.model) LIKE LOWER(:model)");
@@ -41,8 +43,6 @@ public class PostsServiceJPA implements PostsService{
 		if (minPrice != null && maxPrice != null) jpql.append(" AND p.price BETWEEN :minPrice AND :maxPrice");
 
 		TypedQuery<Posts> query = entityManager.createQuery(jpql.toString(), Posts.class);
-
-		System.out.println(jpql);
 
 		if (make != null && !make.isEmpty()) query.setParameter("make", "%" + make + "%");
 		if (model != null && !model.isEmpty()) query.setParameter("model", "%" + model + "%");
@@ -57,8 +57,14 @@ public class PostsServiceJPA implements PostsService{
 	}
 
 
+
 	@Override
-	public Posts getById(long id) { return entityManager.createNamedQuery("Posts.getById", Posts.class).setParameter("id", id).getSingleResult();}
+	public Posts getById(long id) {
+		String jpql = "SELECT p FROM Posts p LEFT JOIN FETCH p.images WHERE p.id = :id";
+		return entityManager.createQuery(jpql, Posts.class)
+				.setParameter("id", id)
+				.getSingleResult();
+	}
 
 
 

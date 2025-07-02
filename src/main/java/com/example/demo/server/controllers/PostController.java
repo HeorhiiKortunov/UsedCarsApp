@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PostController {
 
 	@Autowired
-	PostsService postsService = new PostsServiceJPA();
+	PostsService postsService;
 
 	@GetMapping("/post")
 	public String showPost(@RequestParam long id, Model viewModel){

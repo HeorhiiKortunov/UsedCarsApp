@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Create New Post</h1>
-<form th:action="@{/makePost}" method="post" class="post-form">
+<form th:action="@{/makePost}" method="post" enctype="multipart/form-data" class="post-form">
     <div>
         <label for="make">Make:</label><br>
         <input type="text" id="make" name="make" placeholder="Make" required>
@@ -28,8 +28,12 @@
         <input type="number" id="price" name="price" placeholder="Price" min="0" step="0.01" required>
     </div>
 
-    <!-- Hidden authorId input -->
     <input type="hidden" name="authorId" value="1"/>
+
+    <div>
+        <label for="images">Images:</label><br>
+        <input type="file" id="images" name="images" multiple accept="image/*" required>
+    </div>
 
     <button type="submit">Submit Post</button>
 </form>

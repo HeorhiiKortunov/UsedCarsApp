@@ -76,3 +76,17 @@ a:hover {
     background-color: #0056b3;
 }
 
+.post-image-thumb {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.post-image-thumb img {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+

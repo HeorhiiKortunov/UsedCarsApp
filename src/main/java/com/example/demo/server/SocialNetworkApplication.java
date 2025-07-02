@@ -20,4 +20,7 @@ public class SocialNetworkApplication {
 	@Bean
 	public UsersService usersService(){ return new UsersServiceJPA();}
 
+	@Bean
+	public PostImageService postImageService(){ return new PostImageServiceJPA();}
+
 }

@@ -2,6 +2,8 @@ package com.example.demo.entites;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "posts")
 @NamedQueries({
@@ -28,6 +30,12 @@ public class Posts {
 	@JoinColumn(name = "author_id", referencedColumnName = "id")
 	private Users postAuthor;
 
+	@OneToMany(mappedBy = "post",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true,
+			fetch = FetchType.LAZY)
+	private List<PostImage> images;
+
 	private String make;
 
 	private String model;
@@ -41,7 +49,7 @@ public class Posts {
 
 	public Posts() {}
 
-	public Posts(long id, Users postAuthor, String make, String model, int year, int mileage, int price) {
+	public Posts(long id, Users postAuthor, String make, String model, int year, int mileage, int price, List<PostImage> images) {
 		this.id = id;
 		this.postAuthor = postAuthor;
 		this.make = make;
@@ -49,6 +57,7 @@ public class Posts {
 		this.year = year;
 		this.mileage = mileage;
 		this.price = price;
+		this.images = images;
 	}
 
 	public long getId() {
@@ -105,5 +114,13 @@ public class Posts {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public List<PostImage> getImages() {
+		return images;
+	}
+
+	public void setImages(List<PostImage> images) {
+		this.images = images;
 	}
 }
