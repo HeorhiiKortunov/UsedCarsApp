@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entites.Posts;
 import com.example.demo.entites.Users;
-
 import java.util.List;
 
 public interface UsersService {
