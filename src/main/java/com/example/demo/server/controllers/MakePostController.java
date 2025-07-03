@@ -26,12 +26,12 @@ public class MakePostController {
 	@Autowired
 	PostImageService postImageService;
 
-	@GetMapping("/makePost")
+	@GetMapping("/user/makePost")
 	public String showPostForm(){
 		return "postForm";
 	}
 
-	@PostMapping("/makePost")
+	@PostMapping("/user/makePost")
 	public String makePost(
 			@RequestParam("make") String make,
 			@RequestParam("model") String model,
