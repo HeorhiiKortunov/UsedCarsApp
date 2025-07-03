@@ -1,6 +1,6 @@
 package com.example.demo.server.controllers;
 
-import com.example.demo.entites.Users;
+import com.example.demo.entities.Users;
 import com.example.demo.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class RegisterController {
 		usersService.addUser(user);
 
 		System.out.println("All users: ");
-		usersService.getAllUsers().forEach(u -> System.out.println(u.getId()));
+		usersService.getAllUsers().forEach(u -> System.out.println(u.getUsername()));
 
 		return "redirect:/feed";
 	}

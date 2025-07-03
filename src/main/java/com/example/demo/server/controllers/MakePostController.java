@@ -1,8 +1,8 @@
 package com.example.demo.server.controllers;
 
-import com.example.demo.entites.PostImage;
-import com.example.demo.entites.Posts;
-import com.example.demo.entites.Users;
+import com.example.demo.entities.PostImage;
+import com.example.demo.entities.Posts;
+import com.example.demo.entities.Users;
 import com.example.demo.service.PostImageService;
 import com.example.demo.service.PostsService;
 import com.example.demo.service.UsersService;

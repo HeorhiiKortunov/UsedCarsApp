@@ -1,6 +1,6 @@
 package com.example.demo.server.controllers;
 
-import com.example.demo.entites.PostImage;
+import com.example.demo.entities.PostImage;
 import com.example.demo.service.PostImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

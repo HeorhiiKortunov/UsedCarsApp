@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entites.Users;
+import com.example.demo.entities.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;

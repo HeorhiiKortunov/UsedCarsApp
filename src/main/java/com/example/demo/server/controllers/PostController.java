@@ -1,6 +1,6 @@
 package com.example.demo.server.controllers;
 
-import com.example.demo.entites.Posts;
+import com.example.demo.entities.Posts;
 import com.example.demo.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

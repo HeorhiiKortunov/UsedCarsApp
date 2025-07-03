@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entites.PostImage;
+import com.example.demo.entities.PostImage;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
