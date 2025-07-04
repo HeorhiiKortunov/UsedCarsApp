@@ -38,10 +38,10 @@ public class MakePostController {
 			@RequestParam("year") int year,
 			@RequestParam("mileage") int mileage,
 			@RequestParam("price") int price,
-			@RequestParam("authorId") Long authorId,
+			@RequestParam("author") String author,
 			@RequestParam("images") MultipartFile[] images) {
 
-		Users postAuthor = usersService.getById(authorId);
+		Users postAuthor = usersService.getByUsername(author);
 
 		Posts post = new Posts();
 		post.setPostAuthor(postAuthor);

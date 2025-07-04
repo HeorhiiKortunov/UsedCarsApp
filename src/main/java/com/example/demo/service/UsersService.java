@@ -7,4 +7,5 @@ public interface UsersService {
 	public void addUser(Users user);
 	public List<Users> getAllUsers();
 	public Users getById(long id);
+	public Users getByUsername(String username);
 }

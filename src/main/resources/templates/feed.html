@@ -5,16 +5,19 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+
+<!-- Filter form is GET: no CSRF token required -->
 <form th:action="@{/feed}" method="get" class="filter-form">
-    <input type="text" name="make" placeholder="Make" th:value="${make}">
-    <input type="text" name="model" placeholder="Model" th:value="${model}">
-    <input type="number" name="year" placeholder="Year" th:value="${year}">
+    <input type="text"   name="make"     placeholder="Make"  th:value="${make}">
+    <input type="text"   name="model"    placeholder="Model" th:value="${model}">
+    <input type="number" name="year"     placeholder="Year"  th:value="${year}">
     <input type="number" name="minPrice" placeholder="Min Price" th:value="${minPrice}">
     <input type="number" name="maxPrice" placeholder="Max Price" th:value="${maxPrice}">
     <button type="submit">Filter</button>
 </form>
 
 <div style="margin-bottom: 1rem;">
+    <!-- Link to the secured create‑post page under /user/** -->
     <a th:href="@{/user/makePost}" class="create-post-button">Create New Post</a>
 </div>
 
@@ -35,5 +38,6 @@
         </a>
     </div>
 </div>
+
 </body>
 </html>

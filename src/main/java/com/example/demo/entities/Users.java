@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 @NamedQueries({
 		@NamedQuery(name = "Users.getAllUsers", query = "SELECT u FROM Users u"),
 		@NamedQuery(name = "Users.resetUsers", query = "DELETE FROM Users"),
-		@NamedQuery(name = "Users.getById", query = "SELECT u FROM Users u WHERE u.username = :username")
+		@NamedQuery(name = "Users.getById", query = "SELECT u FROM Users u WHERE u.username = :username"),
+		@NamedQuery(name = "Users.getByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
 })
 public class Users {
 
@@ -19,11 +20,11 @@ public class Users {
 	private boolean enabled;
 
 	private String email;
-	private int phone;
+	private String phone;
 
 	public Users() {}
 
-	public Users(String username, String password, boolean enabled, String email, int phone) {
+	public Users(String username, String password, boolean enabled, String email, String phone) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -65,11 +66,11 @@ public class Users {
 		this.email = email;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 }

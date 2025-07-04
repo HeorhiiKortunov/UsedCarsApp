@@ -6,7 +6,15 @@
 </head>
 <body>
 <h1>Create New Post</h1>
-<form th:action="@{/makePost}" method="post" enctype="multipart/form-data" class="post-form">
+
+<form th:action="@{/user/makePost}" method="post"
+      enctype="multipart/form-data" class="post-form">
+
+    <!-- 🔑 CSRF token: required for POST -->
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
+
     <div>
         <label for="make">Make:</label><br>
         <input type="text" id="make" name="make" placeholder="Make" required>
@@ -28,7 +36,7 @@
         <input type="number" id="price" name="price" placeholder="Price" min="0" step="0.01" required>
     </div>
 
-    <input type="hidden" name="authorId" value="1"/>
+    <input type="hidden" name="author" value="rog" />
 
     <div>
         <label for="images">Images:</label><br>

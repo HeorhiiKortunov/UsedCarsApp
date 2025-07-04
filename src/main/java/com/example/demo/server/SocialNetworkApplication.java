@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.example.demo.entites")
+@EntityScan(basePackages = "com.example.demo.entities")
 public class SocialNetworkApplication {
 
 	public static void main(String[] args) {

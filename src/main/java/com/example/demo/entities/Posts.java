@@ -27,7 +27,7 @@ public class Posts {
 	private long id;
 
 	@ManyToOne
-	@JoinColumn(name = "author_id", referencedColumnName = "id")
+	@JoinColumn(name = "author_username", referencedColumnName = "username")
 	private Users postAuthor;
 
 	@OneToMany(mappedBy = "post",
@@ -37,15 +37,10 @@ public class Posts {
 	private List<PostImage> images;
 
 	private String make;
-
 	private String model;
-
 	private int year;
-
 	private int mileage;
-
 	private int price;
-
 
 	public Posts() {}
 
@@ -74,6 +69,14 @@ public class Posts {
 
 	public void setPostAuthor(Users postAuthor) {
 		this.postAuthor = postAuthor;
+	}
+
+	public List<PostImage> getImages() {
+		return images;
+	}
+
+	public void setImages(List<PostImage> images) {
+		this.images = images;
 	}
 
 	public String getMake() {
@@ -114,13 +117,5 @@ public class Posts {
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public List<PostImage> getImages() {
-		return images;
-	}
-
-	public void setImages(List<PostImage> images) {
-		this.images = images;
 	}
 }

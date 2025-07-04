@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Create Your Account</h1>
+
+<!-- Registration form -->
+<form th:action="@{/register}" method="post" class="post-form" style="max-width: 420px; margin: 2rem auto;">
+
+    <!-- 🔑 CSRF token (required for POST) -->
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
+
+    <div style="margin-bottom: 1rem;">
+        <label for="username"><strong>Username</strong></label><br>
+        <input type="text" id="username" name="username" placeholder="Username" required
+               style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc;">
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+        <label for="email"><strong>Email</strong></label><br>
+        <input type="email" id="email" name="email" placeholder="Email" required
+               style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc;">
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+        <label for="phone"><strong>Phone</strong></label><br>
+        <input type="number" id="phone" name="phone" placeholder="Phone" min="100000000"
+               style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc;">
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <label for="password"><strong>Password</strong></label><br>
+        <input type="password" id="password" name="password" placeholder="Password" required
+               style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc;">
+    </div>
+
+    <button type="submit" class="create-post-button" style="width: 100%;">Register</button>
+</form>
+
+<!-- Link back to feed -->
+<p style="text-align: center;">
+    <a th:href="@{/feed}">← Back to Feed</a>
+</p>
+
+</body>
+</html>
