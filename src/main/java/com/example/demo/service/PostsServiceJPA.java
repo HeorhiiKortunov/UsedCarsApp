@@ -66,10 +66,4 @@ public class PostsServiceJPA implements PostsService{
 				.getSingleResult();
 	}
 
-
-
-//	@Override
-//	public Users getUserByPost(Posts post) {
-//		return post.getPostAuthor();
-//	}
 }

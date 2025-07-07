@@ -15,6 +15,11 @@ public class FeedController {
 	@Autowired
 	private PostsService postsService;
 
+	@GetMapping("")
+	public String redirect(){
+		return "redirect:/feed";
+	}
+
 	@GetMapping("/feed")
 	public String showFeed(
 			@RequestParam(required = false) String make,
@@ -28,7 +33,6 @@ public class FeedController {
 		List<Posts> posts = postsService.getPostsFiltered(make, model, year, mileage, minPrice, maxPrice);
 
 		viewModel.addAttribute("posts", posts);
-
 		viewModel.addAttribute("make", make);
 		viewModel.addAttribute("model", model);
 		viewModel.addAttribute("year", year);

@@ -15,7 +15,7 @@ import java.util.List;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UsersService usersRepository; // Your JPA repo
+    private UsersService usersRepository;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = usersRepository.getByUsername(username);

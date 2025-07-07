@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Feed</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
-<!-- Filter form is GET: no CSRF token required -->
+<div class="top-bar" style="margin-bottom:1rem; display:flex; justify-content:flex-end; gap:0.5rem;">
+    <a th:href="@{/register}" class="auth-button">Register</a>
+    <a th:href="@{/login}"    class="auth-button">Login</a>
+    <a th:href="@{/logout}"   class="auth-button">Logout</a>
+</div>
+
 <form th:action="@{/feed}" method="get" class="filter-form">
     <input type="text"   name="make"     placeholder="Make"  th:value="${make}">
     <input type="text"   name="model"    placeholder="Model" th:value="${model}">
@@ -17,7 +23,6 @@
 </form>
 
 <div style="margin-bottom: 1rem;">
-    <!-- Link to the secured create‑post page under /user/** -->
     <a th:href="@{/user/makePost}" class="create-post-button">Create New Post</a>
 </div>
 

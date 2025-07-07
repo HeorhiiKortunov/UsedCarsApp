@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "post_images")
-@NamedQuery(
-        name = "PostImage.getById",
-        query = "SELECT p FROM PostImage p WHERE p.id = :id"
-)
+@NamedQuery(name = "PostImage.getById", query = "SELECT p FROM PostImage p WHERE p.id = :id")
 public class PostImage {
 
     @Id

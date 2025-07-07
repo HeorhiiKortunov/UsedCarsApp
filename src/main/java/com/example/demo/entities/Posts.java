@@ -7,18 +7,9 @@ import java.util.List;
 @Entity
 @Table(name = "posts")
 @NamedQueries({
-		@NamedQuery(
-				name = "Posts.getAllPosts",
-				query = "SELECT p FROM Posts p"
-		),
-		@NamedQuery(
-				name = "Posts.getByUser",
-				query = "SELECT p FROM Posts p WHERE p.postAuthor = :postAuthor"
-		),
-		@NamedQuery(
-				name = "Posts.getById",
-				query = "SELECT p FROM Posts p WHERE p.id = :id"
-		)
+		@NamedQuery(name = "Posts.getAllPosts", query = "SELECT p FROM Posts p"),
+		@NamedQuery(name = "Posts.getByUser", query = "SELECT p FROM Posts p WHERE p.postAuthor = :postAuthor"),
+		@NamedQuery(name = "Posts.getById", query = "SELECT p FROM Posts p WHERE p.id = :id")
 })
 public class Posts {
 
