@@ -6,6 +6,7 @@ import com.example.demo.entities.Users;
 import com.example.demo.service.PostImageService;
 import com.example.demo.service.PostsService;
 import com.example.demo.service.UsersService;
+import com.example.demo.utils.AuthUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,10 +39,9 @@ public class MakePostController {
 			@RequestParam("year") int year,
 			@RequestParam("mileage") int mileage,
 			@RequestParam("price") int price,
-			@RequestParam("author") String author,
 			@RequestParam("images") MultipartFile[] images) {
 
-		Users postAuthor = usersService.getByUsername(author);
+		Users postAuthor = usersService.getByUsername(AuthUtil.getCurrentUsername());
 
 		Posts post = new Posts();
 		post.setPostAuthor(postAuthor);
